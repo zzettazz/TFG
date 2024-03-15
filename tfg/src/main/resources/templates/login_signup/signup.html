@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iniciar Sesión</title>
+        <link rel="stylesheet" th:href="@{/css/styles/login_signup/signup.css}">
+    </head>
+
+    <body>
+        <video autoplay muted loop id="videoFondo">
+            <source th:src="@{/vid/background-video.mp4}" type="video/mp4">
+        </video>
+
+        <div class="contenedor-formulario">
+            <form th:action="@{${base_url}} + '/signup/enviarVerificacion'" method="POST" class="formulario" id="formulario" onsubmit="">
+                <h2 class="titulo">Regístrese</h2>
+                <br/>
+
+                <input type="text" class="nombre" placeholder="Nombre" autofocus name="nombre" oninput=""/>
+
+                <input type="text" class="apellidos" placeholder="Apellidos" autofocus name="apellidos" oninput=""/>
+
+                <br/>
+
+                <input type="text" class="email" placeholder="Email" autofocus name="email" oninput=""/>
+
+                <input type="date" class="fechaNacimiento" placeholder="Fecha de Nacimiento" autofocus name="fechaNacimiento" oninput=""/>
+
+                <br/>
+
+                <select name="genero" class="genero">
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="NSNC">Prefiero no decirlo</option>
+                </select>
+
+                <select name="idiomaPreferido" class="idioma">
+                    <option value="ES">Español</option>
+                    <option value="ENG">English</option>
+                </select>
+
+                <br/>
+
+                <input type="text" class="usuario" placeholder="Usuario" name="nomUsuario" oninput=""/>
+
+                <input type="password" class="contraseña" placeholder="Contraseña" oninput="" name="contraseña"/>
+
+                <br/>
+                <input type="submit" value="Registrarse" class="boton-login"/>
+            </form>
+        </div>
+    </body>
+
+    <script th:src="@{/js/scripts/signup.js}"></script>
+</html>

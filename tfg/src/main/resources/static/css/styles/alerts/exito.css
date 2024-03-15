@@ -1,0 +1,52 @@
+/* Importación de la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+/* Borramos el margen default */
+* {
+    margin: 0;
+}
+
+body {
+    background-color: black;
+}
+
+#videoFondo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+/* Centramos vertical y horizontalmente */
+.contenedor-formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.contenido {
+    border: 2px solid green;
+    background-color: white;
+    padding: 2vh;
+    min-width: 50vw;
+    max-width: 50vw;
+}
+
+.contenido h2 {
+    text-align: center;
+    margin-bottom: 2vh;
+    color: rgb(0, 0, 0);
+    font-family: 'Kode Mono';
+    font-size: 6vh;
+    text-decoration: underline;
+    -webkit-text-stroke: 2.5px green;
+}
+
+.contenido div {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.5vh;
+}

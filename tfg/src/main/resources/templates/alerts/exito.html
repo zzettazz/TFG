@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iniciar Sesión</title>
+        
+        <link rel="stylesheet" th:href="@{/css/styles/alerts/exito.css}">
+    </head>
+
+    <body>
+        <video autoplay muted loop id="videoFondo">
+            
+            <source th:src="@{/vid/background-video.mp4}" type="video/mp4">
+        </video>
+
+        <div class="contenedor-formulario">
+            <div class="contenido">
+                <h2>Éxito</h2>
+                <div th:text="${mensaje}"></div>
+            </div>
+        </div>
+    </body>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        history.replaceState(null, null, /*[[@{${base_url}}]]*/ '');
+        /*]]>*/
+    </script>
+</html>

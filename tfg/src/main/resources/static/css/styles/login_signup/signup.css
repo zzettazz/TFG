@@ -1,0 +1,110 @@
+/* Importación de la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+/* Borramos el margen default */
+* {
+    margin: 0;
+}
+
+body {
+    background-color: black;
+}
+
+#videoFondo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+/* Centramos vertical y horizontalmente */
+.contenedor-formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Formulario */
+.formulario {
+    background-color: rgba(255, 255, 255, 0.747);
+    padding: 4vh 0;
+    font-family: 'Kode Mono';
+    margin: 0 auto;
+    width: 40vw;
+    text-align: center;
+    border: 2px solid black;
+}
+
+/* Campos a rellenar */
+.formulario .nombre,
+.formulario .apellidos,
+.formulario .email,
+.formulario .usuario,
+.formulario .contraseña {
+    width: 12vw;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 1vh 0.5vw;
+    margin-bottom: 2vh;
+}
+
+.formulario .fechaNacimiento {
+    text-align: center;
+    border: 3px solid black;
+    width: 12vw;
+    border-radius: 10px;
+    padding: 1vh 0.5vw;
+    margin-bottom: 2vh;
+}
+
+.formulario .genero {
+    text-align: center;
+    border: 3px solid black;
+    width: 13.3vw;
+    border-radius: 10px;
+    padding: 1vh 0.5vw;
+    margin-bottom: 2vh;
+}
+
+.formulario .idioma {
+    text-align: center;
+    border: 3px solid black;
+    width: 13.3vw;
+    border-radius: 10px;
+    padding: 1vh 0.5vw;
+    margin-bottom: 2vh;
+}
+
+/* Placeholder de los campos */
+.formulario .usuario::placeholder,
+.formulario .contraseña::placeholder,
+.formulario .nombre::placeholder,
+.formulario .apellidos::placeholder,
+.formulario .email::placeholder {
+    font-style: italic;
+}
+
+.formulario .boton-login:hover {
+    cursor: pointer;
+    background-color: white;
+    color: green;
+    font-weight: bold;
+}
+
+.formulario .boton-login {
+    margin-top: 2vh;
+    border: 2px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.2vh;
+    padding: 1vh 2vh;
+    background-color: green;
+    color: white;
+}
+
+.formulario .titulo {
+    font-size: 4vh;
+}

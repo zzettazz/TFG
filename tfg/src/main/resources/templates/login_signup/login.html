@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iniciar Sesión</title>
+        <link rel="stylesheet" th:href="@{/css/styles/login_signup/login.css}">
+    </head>
+
+    <body>
+        <video autoplay muted loop id="videoFondo">
+            <source th:src="@{/vid/background-video.mp4}" type="video/mp4">
+        </video>
+
+        <div class="contenedor-formulario">
+            <form th:action="@{${base_url}} + '/login/hacerLogin'" method="POST" class="formulario" id="formulario" onsubmit="return validarFormulario()">
+                <h2 class="titulo">Inicie Sesión</h2>
+                <br/>
+                <input type="text" class="usuario" placeholder="Usuario" autofocus name="usuario" oninput="comprobarUsuario()"/>
+                <br>
+                <input type="password" class="contraseña" placeholder="Contraseña" oninput="comprobarContraseña()" name="contraseña"/>
+                <br/>
+                <input type="submit" value="Iniciar Sesión" class="boton-login"/>
+            </form>
+        </div>
+    </body>
+
+    <script th:src="@{/js/scripts/login.js}"></script>
+</html>

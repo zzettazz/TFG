@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Chat with Spring Boot & WebSocket</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div id="messageArea"></div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de usuario:</label>
+                        <input type="text" class="form-control" id="username" th:placeholder="${usuarioActual}" th:value="${usuarioActual}"disabled>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="messageInput" class="form-label">Mensaje:</label>
+                        <input type="text" class="form-control" id="messageInput" placeholder="Introduce tu mensaje">
+                    </div>
+                    <button onclick="sendMessage()" class="btn btn-primary mt-3">Send</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script th:inline="javascript">
+
+        var base_url = /*[[${base_url}]]*/ '';
+        var usuarioActual = /*[[${usuarioActual}]]*/ '';
+        var ws_url = /*[[${ws_url}]]*/ '';
+
+        if (base_url != null && base_url != "") localStorage.setItem('base_url', base_url);
+        if (usuarioActual != null && usuarioActual != "") localStorage.setItem('usuarioActual', usuarioActual);
+        if (ws_url != null && ws_url != "") localStorage.setItem('ws_url', ws_url);
+
+        let socket = new WebSocket("ws://"+localStorage.getItem("ws_url")+"/chatmsg");
+        
+        socket.onmessage = function(event) {
+            let messageArea = document.getElementById("messageArea");
+            messageArea.innerHTML += '<p>' + event.data + '</p>';
+        };
+
+        function sendMessage() {
+            let username = document.getElementById("username").value;
+            let messageInput = document.getElementById("messageInput");
+            
+            let fullMessage = username + ": " + messageInput.value;
+            socket.send(fullMessage);
+
+            ajaxPostRequest((localStorage.getItem("base_url")+"/chat/saveMessage"),
+            {emisor:usuarioActual,receptor:"Test",mensaje:messageInput.value})
+
+            messageInput.value = '';
+        }
+
+        /*<![CDATA[*/
+        history.replaceState(null, null, (localStorage.getItem("base_url")+"/chat"));
+        /*]]>*/
+
+        function ajaxPostRequest(ruta,datos)
+        {
+            $.ajax({
+                type: 'POST',
+                url: ruta,
+                data: JSON.stringify(datos), // Puedes convertir los datos a formato JSON si es necesario
+                contentType: 'application/json'
+            });
+        }
+    </script>
+</html>
