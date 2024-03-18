@@ -3,8 +3,7 @@ package proyecto.tfg.config;
 public final class Config {
     
     // URL POR DEFECTO
-    // public static final String base_url = "http://localhost:8080";
-    public static final String base_url = "http://192.168.3.213:8080";
+    public static final String base_url = "http://localhost:8080";
 
     // VARIABLES DE LA APP
     public static final String nombreAPP = "Nombre APP";
